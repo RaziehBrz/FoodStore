@@ -87,5 +87,61 @@ namespace FoodStore.Repository
             await _context.SaveChangesAsync();
             return true;
         }
+        //Get all categories
+        public async Task<List<CategoryDetailsDto>> GetAllCategories()
+        {
+            var categories = await _context.Categories.Select(x =>
+            new CategoryDetailsDto()
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToListAsync();
+            return categories;
+        }
+        //Get a category by id
+        public async Task<CategoryDetailsDto> GetCategoryById(int id)
+        {
+            var category = await _context.Categories.Where(x => x.Id == id).Select
+            (x => new CategoryDetailsDto()
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).FirstOrDefaultAsync();
+            return category;
+        }
+        //Add a new category
+        public async Task<int> CreateCategory(CreateCategoryDto model)
+        {
+            var category = new Category()
+            {
+                Name = model.Name
+            };
+            _context.Add(category);
+            await _context.SaveChangesAsync();
+
+            return category.Id;
+        }
+        //Update a category by id
+        public async Task<bool> UpdateCategoryById(int id, UpdateCategoryDto model)
+        {
+            var category = await _context.Categories.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (category is null) return false;
+
+            category.Name = model.Name;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        //Delete a category by Id
+        public async Task<bool> RemoveCategoryById(int id)
+        {
+            var category = await _context.Categories.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (category is null) return false;
+
+            _context.Remove(category);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }
