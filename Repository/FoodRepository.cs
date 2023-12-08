@@ -45,6 +45,38 @@ namespace FoodStore.Repository
             }).FirstOrDefaultAsync();
             return option;
         }
+        //Get menu options by category
+        public async Task<List<OptionDetailsDto>> GetOptionsByCategory(int categoryId)
+        {
+            var options = await _context.MenuOptions.Where(x => x.CategoryId == categoryId).Select(
+                x => new OptionDetailsDto()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Price = x.Price,
+                    Description = x.Description,
+                    CategoryId = categoryId,
+                    TypeId = x.TypeId
+                }
+            ).ToListAsync();
+            return options;
+        }
+        //Get menu options by type
+        public async Task<List<OptionDetailsDto>> GetOptionsByType(int typeId)
+        {
+            var options = await _context.MenuOptions.Where(x => x.TypeId == typeId).Select(
+                x => new OptionDetailsDto()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Price = x.Price,
+                    Description = x.Description,
+                    CategoryId = x.CategoryId,
+                    TypeId = x.TypeId
+                }
+            ).ToListAsync();
+            return options;
+        }
         //Add a new menu option to MenuOptions table
         public async Task<int> CreateOption(CreateOptionDto model)
         {
@@ -143,5 +175,6 @@ namespace FoodStore.Repository
             await _context.SaveChangesAsync();
             return true;
         }
+
     }
 }

@@ -67,6 +67,22 @@ namespace FoodStore.Controller
             if (result) return Ok(result);
             return BadRequest("There is no option with this id!");
         }
+        //Get menu options by category
+        [HttpGet("menuoptions/categories/{categoryId}")]
+        public async Task<IActionResult> GetOptionsByCategory(int categoryId)
+        {
+            var options = await _foodStoreRepository.GetOptionsByCategory(categoryId);
+            if (options.Count == 0) return BadRequest("There is no option in this category!");
+            return Ok(options);
+        }
+        //Get menu options by type
+        [HttpGet("menuoptions/types/{typeId}")]
+        public async Task<IActionResult> GetOptionsByType(int typeId)
+        {
+            var options = await _foodStoreRepository.GetOptionsByType(typeId);
+            if (options.Count == 0) return BadRequest("There is no option in this type!");
+            return Ok(options);
+        }
         //Get all categories
         [HttpGet("categories")]
         public async Task<IActionResult> GetAllCategories()

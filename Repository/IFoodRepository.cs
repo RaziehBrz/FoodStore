@@ -8,6 +8,8 @@ namespace FoodStore.Repository
     {
         Task<List<OptionDetailsDto>> GetAllOptions();
         Task<OptionDetailsDto> GetOptionById(int id);
+        Task<List<OptionDetailsDto>> GetOptionsByCategory(int categoryId);
+        Task<List<OptionDetailsDto>> GetOptionsByType(int typeId);
         Task<int> CreateOption(CreateOptionDto model);
         Task<bool> UpdateOption(int id, UpdateOptionDto model);
         Task<bool> RemoveOption(int id);
