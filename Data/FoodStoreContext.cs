@@ -10,6 +10,7 @@ namespace FoodStore.Data
         public DbSet<MenuOption> MenuOptions { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<OptionsType> optionsTypes { get; set; }
+        public DbSet<Role> roles { get; set; }
         public FoodStoreContext(DbContextOptions<FoodStoreContext> options) : base(options)
         {
         }

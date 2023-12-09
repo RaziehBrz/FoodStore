@@ -83,6 +83,7 @@ namespace FoodStore.Controller
             if (options.Count == 0) return BadRequest("There is no option in this type!");
             return Ok(options);
         }
+
         //Get all categories
         [HttpGet("categories")]
         public async Task<IActionResult> GetAllCategories()
@@ -90,6 +91,7 @@ namespace FoodStore.Controller
             var categories = await _foodStoreRepository.GetAllCategories();
             return Ok(categories);
         }
+
         //Get a category by Id
         [HttpGet("categories/{id}")]
         public async Task<IActionResult> GetCategoryById(int id)
@@ -98,6 +100,7 @@ namespace FoodStore.Controller
             if (category is null) return BadRequest("There is no category with this id!");
             return Ok(category);
         }
+
         //Add a new category
         [HttpPost("categories")]
         public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryDto model)
@@ -105,6 +108,7 @@ namespace FoodStore.Controller
             var category = await _foodStoreRepository.CreateCategory(model);
             return Ok(category);
         }
+
         //Update a category by id
         [HttpPut("categories/{id}")]
         public async Task<IActionResult> UpdateCategoryById(int id, UpdateCategoryDto model)
@@ -113,6 +117,7 @@ namespace FoodStore.Controller
             if (result) return Ok(result);
             return BadRequest("There is no category with this id!");
         }
+
         //Delete a category by id
         [HttpDelete("categories/{id}")]
         public async Task<IActionResult> RemoveCategoryById(int id)
