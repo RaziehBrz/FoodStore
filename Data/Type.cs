@@ -1,8 +1,8 @@
 namespace FoodStore.Data
 {
-    public class OptionsType
+    enum Type
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        Fastfood = 1,
+        Restaurant
     }
 }

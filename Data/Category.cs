@@ -1,8 +1,10 @@
 namespace FoodStore.Data
 {
-    public class Category
+    enum Category
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        MainCourse = 1,
+        Appetizer,
+        Dessert,
+        Drink
     }
 }

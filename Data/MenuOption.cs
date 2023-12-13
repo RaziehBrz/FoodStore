@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace FoodStore.Data
 {
-    public class MenuOption
+    public class MenuOption : BaseEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
