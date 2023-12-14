@@ -13,5 +13,7 @@ namespace FoodStore.Data
         public bool Status { get; set; } //True = successful / False = Unsusccessful
         public User User { get; set; }
         public Order Order { get; set; }
+        public Discount Discount { get; set; }
+
     }
 }

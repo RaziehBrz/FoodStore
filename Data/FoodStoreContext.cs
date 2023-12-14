@@ -25,6 +25,18 @@ namespace FoodStore.Data
           .HasOne(p => p.Payment) //Order has one Payment
           .WithOne(p => p.Order) //Payment is associated with one Order
           .HasForeignKey<Payment>(p => p.OrderId);
+
+            modelBuilder.Entity<Discount>()
+             .HasMany(a => a.payments)
+             .WithOne(b => b.Discount)
+             .HasForeignKey(b => b.DiscountId);
+
+            modelBuilder.Entity<MenuOption>()
+            .HasMany(a => a.orderDetails)
+            .WithOne(b => b.MenuOption)
+            .HasForeignKey(b => b.OptionId);
+
+
         }
 
 

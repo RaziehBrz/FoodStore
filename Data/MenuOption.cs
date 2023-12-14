@@ -10,5 +10,6 @@ namespace FoodStore.Data
         public string Description { get; set; }
         public int CategoryId { get; set; }
         public int TypeId { get; set; }
+        public ICollection<OrderDetails> orderDetails { get; set; }
     }
 }
