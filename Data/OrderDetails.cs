@@ -12,6 +12,6 @@ namespace FoodStore.Data
         public int Quantity { get; set; }
         public int Total_Price { get; set; }
         public Order Order { get; set; }
-        public MenuOption MenuOption { get; set; }
+        public Item Item { get; set; }
     }
 }

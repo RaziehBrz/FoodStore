@@ -16,11 +16,11 @@ namespace FoodStore.Repository
             _context = context;
         }
 
-        //Get all options
-        public async Task<List<OptionDetailsDto>> GetAllOptions()
+        //Get all Items
+        public async Task<List<ItemDetailsDto>> GetAllItems()
         {
-            var options = await _context.MenuOptions.Select(x =>
-            new OptionDetailsDto()
+            var Items = await _context.Items.Select(x =>
+            new ItemDetailsDto()
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -29,13 +29,13 @@ namespace FoodStore.Repository
                 CategoryId = x.CategoryId,
                 TypeId = x.TypeId
             }).ToListAsync();
-            return options;
+            return Items;
         }
-        //Get an option by id
-        public async Task<OptionDetailsDto> GetOptionById(int id)
+        //Get an Item by id
+        public async Task<ItemDetailsDto> GetItemById(int id)
         {
-            var option = await _context.MenuOptions.Where(x => x.Id == id).Select(x =>
-            new OptionDetailsDto()
+            var Item = await _context.Items.Where(x => x.Id == id).Select(x =>
+            new ItemDetailsDto()
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -44,13 +44,13 @@ namespace FoodStore.Repository
                 CategoryId = x.CategoryId,
                 TypeId = x.TypeId
             }).FirstOrDefaultAsync();
-            return option;
+            return Item;
         }
-        //Get options by categoryid
-        public async Task<List<OptionDetailsDto>> GetOptionsByCategoryId(int categoryId)
+        //Get Items by categoryid
+        public async Task<List<ItemDetailsDto>> GetItemsByCategoryId(int categoryId)
         {
-            var options = await _context.MenuOptions.Where(x => x.CategoryId == categoryId).Select(x =>
-            new OptionDetailsDto()
+            var Items = await _context.Items.Where(x => x.CategoryId == categoryId).Select(x =>
+            new ItemDetailsDto()
             {
 
                 Id = x.Id,
@@ -60,13 +60,13 @@ namespace FoodStore.Repository
                 CategoryId = x.CategoryId,
                 TypeId = x.TypeId
             }).ToListAsync();
-            return options;
+            return Items;
         }
-        //Get options by Typeid
-        public async Task<List<OptionDetailsDto>> GetOptionsByTypeId(int typeId)
+        //Get Items by Typeid
+        public async Task<List<ItemDetailsDto>> GetItemsByTypeId(int typeId)
         {
-            var options = await _context.MenuOptions.Where(x => x.TypeId == typeId).Select(x =>
-            new OptionDetailsDto()
+            var Items = await _context.Items.Where(x => x.TypeId == typeId).Select(x =>
+            new ItemDetailsDto()
             {
 
                 Id = x.Id,
@@ -76,7 +76,7 @@ namespace FoodStore.Repository
                 CategoryId = x.CategoryId,
                 TypeId = x.TypeId
             }).ToListAsync();
-            return options;
+            return Items;
         }
     }
 }

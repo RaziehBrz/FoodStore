@@ -24,35 +24,35 @@ namespace FoodStore.Controller
             _context = context;
         }
         [HttpGet]
-        //Get all options
-        public async Task<IActionResult> GetAllOptions()
+        //Get all Items
+        public async Task<IActionResult> GetAllItems()
         {
-            var options = await _foodStoreRepository.GetAllOptions();
-            return Ok(options);
+            var Items = await _foodStoreRepository.GetAllItems();
+            return Ok(Items);
         }
         [HttpGet("{id}")]
-        //Get an option by id
-        public async Task<IActionResult> GetOptionById(int id)
+        //Get an Item by id
+        public async Task<IActionResult> GetItemById(int id)
         {
-            var option = await _foodStoreRepository.GetOptionById(id);
-            if (option is null) return BadRequest("There is no option with this id!");
-            return Ok(option);
+            var Item = await _foodStoreRepository.GetItemById(id);
+            if (Item is null) return BadRequest("There is no Item with this id!");
+            return Ok(Item);
         }
         [HttpGet("categories/{CategoryId}")]
-        //Get an option by id
-        public async Task<IActionResult> GetOptionByCategoryId(int categoryid)
+        //Get an Item by id
+        public async Task<IActionResult> GetItemByCategoryId(int categoryid)
         {
-            var options = await _foodStoreRepository.GetOptionsByCategoryId(categoryid);
-            if (options.Count == 0) return BadRequest("There is no option with this category id!");
-            return Ok(options);
+            var Items = await _foodStoreRepository.GetItemsByCategoryId(categoryid);
+            if (Items.Count == 0) return BadRequest("There is no Item with this category id!");
+            return Ok(Items);
         }
         [HttpGet("types/{TypeId}")]
-        //Get an option by id
-        public async Task<IActionResult> GetOptionByTypeId(int typeId)
+        //Get an Item by id
+        public async Task<IActionResult> GetItemByTypeId(int typeId)
         {
-            var options = await _foodStoreRepository.GetOptionsByTypeId(typeId);
-            if (options.Count == 0) return BadRequest("There is no option with this type id!");
-            return Ok(options);
+            var Items = await _foodStoreRepository.GetItemsByTypeId(typeId);
+            if (Items.Count == 0) return BadRequest("There is no Item with this type id!");
+            return Ok(Items);
         }
 
 

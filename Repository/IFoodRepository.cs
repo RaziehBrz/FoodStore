@@ -6,9 +6,9 @@ namespace FoodStore.Repository
 {
     public interface IFoodStoreRepository
     {
-        Task<List<OptionDetailsDto>> GetAllOptions();
-        Task<OptionDetailsDto> GetOptionById(int id);
-        Task<List<OptionDetailsDto>> GetOptionsByCategoryId(int categoryId);
-        Task<List<OptionDetailsDto>> GetOptionsByTypeId(int typeId);
+        Task<List<ItemDetailsDto>> GetAllItems();
+        Task<ItemDetailsDto> GetItemById(int id);
+        Task<List<ItemDetailsDto>> GetItemsByCategoryId(int categoryId);
+        Task<List<ItemDetailsDto>> GetItemsByTypeId(int typeId);
     }
 }

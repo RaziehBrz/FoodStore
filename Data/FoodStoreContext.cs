@@ -31,9 +31,9 @@ namespace FoodStore.Data
              .WithOne(b => b.Discount)
              .HasForeignKey(b => b.DiscountId);
 
-            modelBuilder.Entity<MenuOption>()
+            modelBuilder.Entity<Item>()
             .HasMany(a => a.orderDetails)
-            .WithOne(b => b.MenuOption)
+            .WithOne(b => b.Item)
             .HasForeignKey(b => b.OptionId);
 
 
@@ -42,7 +42,7 @@ namespace FoodStore.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<MenuOption> MenuOptions { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<OrderDetails> orderDetails { get; set; }
         public FoodStoreContext(DbContextOptions<FoodStoreContext> options) : base(options)
