@@ -10,5 +10,6 @@ namespace FoodStore.Repository
         Task<ItemDetailsDto> GetItemById(int id);
         Task<List<ItemDetailsDto>> GetItemsByCategoryId(int categoryId);
         Task<List<ItemDetailsDto>> GetItemsByTypeId(int typeId);
+        Task<int> CreateItem(CreateItemDto model);
     }
 }

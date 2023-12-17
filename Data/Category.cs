@@ -5,6 +5,7 @@ namespace FoodStore.Data
         MainCourse = 1,
         Appetizer,
         Dessert,
-        Drink
+        Drink,
+        IsDefinded
     }
 }

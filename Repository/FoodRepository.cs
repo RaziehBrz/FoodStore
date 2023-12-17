@@ -52,7 +52,6 @@ namespace FoodStore.Repository
             var Items = await _context.Items.Where(x => x.CategoryId == categoryId).Select(x =>
             new ItemDetailsDto()
             {
-
                 Id = x.Id,
                 Name = x.Name,
                 Price = x.Price,
@@ -77,6 +76,21 @@ namespace FoodStore.Repository
                 TypeId = x.TypeId
             }).ToListAsync();
             return Items;
+        }
+        //Add a new item
+        public async Task<int> CreateItem(CreateItemDto model)
+        {
+            var item = new Item()
+            {
+                Name = model.Name,
+                Price = model.Price,
+                Description = model.Description,
+                CategoryId = model.CategoryId,
+                TypeId = model.TypeId,
+            };
+            _context.Add(item);
+            await _context.SaveChangesAsync();
+            return item.Id;
         }
     }
 }

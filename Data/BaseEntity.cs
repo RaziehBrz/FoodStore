@@ -6,6 +6,6 @@ namespace FoodStore.Data
     {
         public bool IsDeleted { get; set; }
         public DateTime Last_update { get; set; }
-        public DateTime Create_At { get; set; }
+        public DateTime Created_At { get; set; }
     }
 }

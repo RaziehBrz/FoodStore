@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodStore.Data;
@@ -5,6 +6,8 @@ using FoodStore.Models;
 using FoodStore.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Type = System.Type;
+
 
 namespace FoodStore.Controller
 {
@@ -39,7 +42,7 @@ namespace FoodStore.Controller
             return Ok(Item);
         }
         [HttpGet("categories/{CategoryId}")]
-        //Get an Item by id
+        //Get an Item by category id
         public async Task<IActionResult> GetItemByCategoryId(int categoryid)
         {
             var Items = await _foodStoreRepository.GetItemsByCategoryId(categoryid);
@@ -47,12 +50,19 @@ namespace FoodStore.Controller
             return Ok(Items);
         }
         [HttpGet("types/{TypeId}")]
-        //Get an Item by id
+        //Get an Item by item id
         public async Task<IActionResult> GetItemByTypeId(int typeId)
         {
             var Items = await _foodStoreRepository.GetItemsByTypeId(typeId);
             if (Items.Count == 0) return BadRequest("There is no Item with this type id!");
             return Ok(Items);
+        }
+        //Add a new item
+        [HttpPost]
+        public async Task<IActionResult> CreateItem([FromBody] CreateItemDto model)
+        {
+            var id = await _foodStoreRepository.CreateItem(model);
+            return Ok(id);
         }
 
 
